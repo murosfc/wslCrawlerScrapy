@@ -27,6 +27,8 @@ class PapelSpider(scrapy.Spider):
                         key = 'round ' + str(j+1)
                         ranking[key] = round
                     yield ranking
+        df = pd.DataFrame.from_dict(ranking)
+        df.to_excel("wslRank.xlsx")
         try:
             df = pd.read_csv("wsl.csv")
             df.to_excel("wslRank.xlsx")
